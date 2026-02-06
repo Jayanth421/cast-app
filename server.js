@@ -1,3 +1,10 @@
+const express = require("express");
+const http = require("http");   // ← THIS LINE WAS MISSING
+const WebSocket = require("ws");
+
+const app = express();
+app.use(express.static("public"));
+
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
@@ -20,4 +27,4 @@ wss.on("connection", ws => {
 });
 
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => console.log("Server running on " + PORT));
+server.listen(PORT, () => console.log("Running"));
